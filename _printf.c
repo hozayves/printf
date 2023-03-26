@@ -21,20 +21,24 @@ int _handle_print(const char *format, va_list args)
 		{"d", _print_int},
 		{"i", _print_int}
 	};
-	/* va_list args_copy; */
 
-	for (i = 0; i < 9 && *valid_specs[i].spec != *format; i++)
-	{
+	for (i = 0; i < 4 && *valid_specs[i].spec != *format; i++)
 		j++;
-	}
 
-	if (j < 9)
+	if (j < 4)
 	{
 		local_printed = valid_specs[j].func(args);
 	}
+	else if (*format == '%')
+	{
+		_putchar('%');
+		return (1);
+	}
 	else
 	{
-		return (0);
+		_putchar('%');
+		_putchar(*format);
+		return (2);
 	}
 
 	return (local_printed);
@@ -55,19 +59,22 @@ int _printf(const char *format, ...)
 	int char_printed = 0;
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
 
 	while (*format)
 	{
-		if (*format != '%')
-		{
-			_putchar(*format);
-			char_printed++;
-		}
-		else
+		if (*format == '%')
 		{
 			format++;
 			char_printed += _handle_print(format, args);
+		}
+		else
+		{
+			_putchar(*format);
+			char_printed++;
 		}
 		format++;
 	}

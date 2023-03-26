@@ -2,6 +2,8 @@
 #define _PRINTF_H
 
 #include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /* Functions for specifiers */
 int _print_char(va_list args);
