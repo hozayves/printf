@@ -22,7 +22,7 @@ int _handle_print(const char *format, va_list args)
 		{"i", _print_int}
 	};
 
-	for (i = 0; i < 4 && format != *valid_specs[i].spec; i++)
+	for (i = 0; i < 4 && *format != *valid_specs[i].spec; i++)
 		j++;
 
 	if (j < 4)
