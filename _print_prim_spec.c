@@ -73,9 +73,9 @@ void _print_int_order(unsigned int number)
  * to the stdout
  *
  * @args: the variadic argument holding the
- * intger to be printed
+ * integer to be printed
  *
- * Return: number of values localy printed
+ * Return: number of values local printed
  */
 int _print_int(va_list args)
 {
