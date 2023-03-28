@@ -10,7 +10,7 @@
  * @format: the string to be printed
  * @args: list of variadic arguments
  *
- * Return: nothing
+ * Return: loca printed characters
  */
 int _handle_print(const char *format, va_list args)
 {
