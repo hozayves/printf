@@ -10,7 +10,7 @@
  * @args: the variadic argument holding the
  * character to be printed
  *
- * Return: always (1) as number of charracter
+ * Return: always (1) as number of character
  * printed
  */
 int _print_char(va_list args)
