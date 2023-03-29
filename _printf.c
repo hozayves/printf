@@ -44,6 +44,44 @@ int _handle_print(const char *format, va_list args)
 	return (local_printed);
 }
 
+/**
+ * _handle_slash - handle the backslash case
+ *
+ * @format: the string to be printed
+ *
+ * Return: nothing
+ */
+void _handle_slash(const char *format)
+{
+	switch (*format)
+	{
+	case 'a':
+		_putchar(7);
+		break;
+	case 'b':
+		_putchar(8);
+		break;
+	case 'f':
+		_putchar(12);
+		break;
+	case 'n':
+		_putchar(10);
+		break;
+	case 'r':
+		_putchar(13);
+		break;
+	case 't':
+		_putchar(9);
+		break;
+	case 'v':
+		_putchar(11);
+		break;
+	default:
+		_putchar(*format);
+		break;
+	}
+}
+
 
 /**
  * _printf - write a given string to the standard output
@@ -69,6 +107,8 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			while (*format == ' ')
+				format++;
 			char_printed += _handle_print(format, args);
 		}
 		else
@@ -78,6 +118,7 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
+
 	va_end(args);
 	return (char_printed);
 }
